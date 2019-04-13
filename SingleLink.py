@@ -47,12 +47,36 @@ class SingleLinkList(object):
             cur = cur.next
         return False
 
+    def removeall(self, item):
+        '''
+        remove all nodes equal item
+        '''
+        pre = self.__head
+        while pre.ele == item:
+            self.__head = pre.next
+            pre = self.__head
+        while pre.next:
+            if pre.next.ele == item:
+
+                pre.next = pre.next.next
+            else:
+                pre = pre.next
+
     def remove(self, item):
         '''
-        :param item:
-        :return:
+        remove first node equal item
         '''
-
+        pre = self.__head
+        if pre.ele == item:
+            self.__head = pre.next
+            pre = self.__head
+        else:
+            while pre.next:
+                if pre.next.ele == item:
+                    pre.next = pre.next.next
+                    break
+                else:
+                    pre = pre.next
 
 
     def insert(self, pos, item):
@@ -127,14 +151,25 @@ if __name__ == "__main__":
     a.append(1)
     a.append(2)
     a.append(3)
+    a.append(3)
+    a.append(3)
     a.append(4)
+    a.append(4)
+    a.append(4)
+    a.add(0)
+    a.add(0)
+    a.add(0)
+    a.add(0)
     a.add(0)
     print(a.length())
     a.travel()
     print(a.is_empty())
-    a.insert(5,"test")
+    a.insert(10,"test")
     a.travel()
-    print(a.search(0))
+    #print(a.search(0))
+    a.removeall(4)
+
+    a.travel()
 
 
 
